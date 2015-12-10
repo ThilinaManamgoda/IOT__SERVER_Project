@@ -12,23 +12,17 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence;
+import org.maana.iot_project.models.MQTT_Constants;
 
-public class DeviceControllerService implements MqttCallback{
+public class DeviceControllerService implements MqttCallback,MQTT_Constants{
 	public final static String MQTT_SENSOR_CONNCETION_ID="123";	
 	
 	public static DeviceControllerService deviceControllerService = null;
 	
 	private static MqttClient mqttClient = null;
-	public final static String userName ="admin";
-	public final static String password = "admin";
-	public final static String saveFilesForListen = "saveFilesForListen";
-	public final static String saveFilesForSend= "saveFilesForSend";
-	public final static String topic = "device/#";
-	  // The URL of the Message Broker
-    public static final String BROKER_URL = "tcp://localhost:1883";
 
-    // The temp directory to use for mqtt client
-    public static final String TMP_DIR= System.getProperty("java.io.tmpdir");
+	private final static String topic = "device/#";
+
     
 	public DeviceControllerService(boolean cleanSession, String userName, String password) throws MqttException {
 		System.out.println("in DeviceSensorControllerService constructor");
@@ -76,30 +70,6 @@ public class DeviceControllerService implements MqttCallback{
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		
 	}	
-	public void sendDeviceControlMessage(MqttMessage mqttMessage,String topic,String userId ) throws MqttException, JsonGenerationException, JsonMappingException, IOException{
-		System.out.println("in sendDeviceControlMessage ");
-			//MAKE CONNECTION WITH WSO2 MESSAGE BROKER
-			MqttConnectOptions options = new MqttConnectOptions();
-	        options.setCleanSession(true);
-	        options.setUserName(userName);
-	        options.setPassword(password.toCharArray());
-	        MqttClient mqttClientForSend = new MqttClient(BROKER_URL, userId,
-	                new MqttDefaultFilePersistence(TMP_DIR + File.separator + saveFilesForSend));
-	        mqttClientForSend.setCallback(this);
-	        mqttClientForSend.connect(options);
-	        mqttClientForSend.subscribe(topic, 1);
-	    
-	        
-	       
-	        //SENDING TO QEUE
-	        
-	        mqttClientForSend.publish(topic, mqttMessage);
-	        System.out.println("DeviceSensorControllerService mqqt message sent");
-	        System.out.println("DeviceSensorControllerService rest connection");
-	        
-	        //CLOSING CONNECTION AND RESOURCES
-	        mqttClientForSend.disconnect();
-	        mqttClientForSend.close();
-	}
+	
 	
 }

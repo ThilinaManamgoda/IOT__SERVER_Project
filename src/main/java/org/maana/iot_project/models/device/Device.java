@@ -1,6 +1,8 @@
 package org.maana.iot_project.models.device;
 
 import java.util.Date;
+import java.util.HashMap;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -10,10 +12,17 @@ public class Device {
 	private String deviceName;
 	private DeviceType deviceType;
 	private Date device_Created_Date;
-
+	private DeviceState deviceState;
+	private HashMap<Long,DeviceState> states;
+	
 	public Device() {
 	}
-
+	public void addState(long stateId,DeviceState deviceState){
+		states.put(stateId, deviceState);
+	}
+	public DeviceState getState(long stateId){
+		return states.get(stateId);
+	}
 	public Long getDevice_Id() {
 		return device_Id;
 	}
@@ -44,6 +53,14 @@ public class Device {
 
 	public void setDeviceName(String deviceName) {
 		this.deviceName = deviceName;
+	}
+
+	public DeviceState getDeviceState() {
+		return deviceState;
+	}
+
+	public void setDeviceState(DeviceState deviceState) {
+		this.deviceState = deviceState;
 	}
 
 }

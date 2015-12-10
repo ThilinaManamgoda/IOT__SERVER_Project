@@ -27,6 +27,14 @@ public class User {
 		return sensors.get(arg0);
 	}
 
+	public Map<Long, Device> getDevices() {
+		return devices;
+	}
+
+	public void setDevices(Map<Long, Device> devices) {
+		this.devices = devices;
+	}
+
 	public Sensor addSensor(Long arg0, Sensor arg1) {
 		return sensors.put(arg0, arg1);
 	}

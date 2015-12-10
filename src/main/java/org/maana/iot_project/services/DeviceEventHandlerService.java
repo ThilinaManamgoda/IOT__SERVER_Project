@@ -7,9 +7,9 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.maana.iot_project.database.UserDataBase;
 import org.maana.iot_project.messages.DeviceControRequestlMessage;
 import org.maana.iot_project.messages.DeviceControlMessage;
+import org.maana.iot_project.models.MQTT_Constants;
 import org.maana.iot_project.models.User;
 import org.maana.iot_project.models.device.Device;
 import org.maana.iot_project.models.device.DeviceType;
@@ -17,12 +17,10 @@ import org.maana.iot_project.models.device.EventDevice;
 
 
 
-public class DeviceEventHandlerService {
+public class DeviceEventHandlerService implements MQTT_Constants{
 
-	private  DeviceControllerService deviceControllerService = DeviceControllerService.getInstanceOfThisClass();
-	private   UserDataBase userDataBase =UserDataBase.getInstanceOfThisClass();
 	private static DeviceEventHandlerService deviceEventHandlerService = null;
-	private static final  String MQTT_TOPIC="device/";
+
 	
 	public DeviceEventHandlerService() {	
 		System.out.println("DeviceEventHandlerService ....");
@@ -41,7 +39,8 @@ public class DeviceEventHandlerService {
 	}	
 	public void handleDeviceEvent(long userId,DeviceControRequestlMessage deviceControRequestlMessage){
 		System.out.println("in DeviceEventHandlerService : handleDeviceEvent");
-		User user = userDataBase.getUserById(userId);
+		UserService userService = new UserService();
+		User user =userService.getUSerById(userId);
 		
 		Device device = user.getDeviceById(deviceControRequestlMessage.getDeviceId());
 		DeviceType deviceType =device.getDeviceType();
@@ -65,7 +64,9 @@ public class DeviceEventHandlerService {
 	        mqttMessage.setPayload(JSONMessage.getBytes());
 	        //SENDIN TO SENSOR VIA DEVICE_SENSOR_CONTROLLER_SERVICE
 	        System.out.println("going deviceControllerService : sendDeviceControlMessage ");
-			deviceControllerService.sendDeviceControlMessage(mqttMessage, createTopic(userId),userId_String);
+	        ConnectToDeviceService connectToDeviceService = new ConnectToDeviceService();
+	        connectToDeviceService.sendDeviceControlMessage(mqttMessage, createTopicForSend(userId),userId_String);
+			connectToDeviceService.waitingForStateReply(userId_String,createTopicForStateReply(userId));
 		
 		} catch (MqttException e) {
 			// TODO Auto-generated catch block
@@ -81,8 +82,11 @@ public class DeviceEventHandlerService {
 			e.printStackTrace();
 		}
 	}
-	private String createTopic(long userId){
+	private String createTopicForSend(long userId){
 		return MQTT_TOPIC+String.valueOf(userId);
+	}
+	private String createTopicForStateReply(long userId){
+		return MQTT_TOPIC_STATE+String.valueOf(userId);
 	}
 	private String createJsonObjectOfObject(final DeviceControlMessage deviceControlMessage) throws JsonGenerationException, JsonMappingException, IOException{
 		  ObjectMapper mapper = new ObjectMapper();

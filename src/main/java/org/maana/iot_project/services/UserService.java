@@ -2,15 +2,7 @@ package org.maana.iot_project.services;
 
 import org.maana.iot_project.database.UserDataBase;
 import org.maana.iot_project.models.User;
-import org.maana.iot_project.models.device.Device;
-import org.maana.iot_project.models.device.DeviceModel;
-import org.maana.iot_project.models.device.DeviceType;
-import org.maana.iot_project.models.device.DeviceTypes;
-import org.maana.iot_project.models.device.EventDevice;
-import org.maana.iot_project.models.sensor.Sensor;
-import org.maana.iot_project.models.sensor.SensorCriticalAction;
-import org.maana.iot_project.models.sensor.Sensor_Model;
-import org.maana.iot_project.models.sensor.Sensor_Type;
+
 
 public class UserService {
 	
@@ -28,10 +20,9 @@ public class UserService {
 	}
 
 	// PUT USER IN DATABASE
-	public void putUser(User user) {
+	public void putUser(User user,long userId) {
 		
-		long userId =userDataBase.noOfUsers()+1;
-		user.setId(userId);
+	
 		userDataBase.putUser(user,userId);
 	}
 
@@ -42,5 +33,8 @@ public class UserService {
 	//DELETE USER AND RETURN USER
 	public User deleteUser(long userId){
 		return userDataBase.deleteUser(userId);
+	}
+	public int noOfUsers() {
+		return userDataBase.noOfUsers();
 	}
 }

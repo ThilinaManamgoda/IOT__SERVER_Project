@@ -37,7 +37,7 @@ public class UserResource {
 		UserService userService = new UserService();
 		if (userService.isUserIsThere(id)) {
 			User temp_user = userService.getUSerById(id);
-			return Response.ok().entity(temp_user).build();
+			return Response.ok().entity(temp_user.getDeviceById(1)).build();
 
 		} else {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
@@ -49,8 +49,10 @@ public class UserResource {
 	public Response storeUser(User user, @Context UriInfo uriInfo) {
 
 		UserService userService = new UserService();
-		userService.putUser(user);
-		long userId = user.getId();
+		
+		long userId = userService.noOfUsers()+1;
+		user.setId(userId);
+		userService.putUser(user,userId);
 		String userId_String = String.valueOf(userId);
 		//CREATE URI FOR CREATED USER
 		URI uri = uriInfo.getAbsolutePathBuilder().path(userId_String).build();

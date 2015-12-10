@@ -3,6 +3,8 @@ package org.maana.iot_project.models.device;
 
 import java.util.HashMap;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class DeviceModel {
 
 	private int id;
