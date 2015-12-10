@@ -15,7 +15,7 @@ public class SensorControlService implements MqttCallback {
 public final static String MQTT_SENSOR_CONNCETION_ID="12345";	
 	
 	public static SensorControlService sensorControlService = null;
-	public  SensorEventHandlerService sensorEventHandlerService =  SensorEventHandlerService.getInstanceOfThisClass();
+	
 	private static MqttClient mqttClient = null;
 	public final static String userName ="admin";
 	public final static String password = "admin";
@@ -76,6 +76,7 @@ public final static String MQTT_SENSOR_CONNCETION_ID="12345";
 		System.out.println("Message arrived");
 		System.out.println("Going to sensorEventHandlerService");
 		System.out.println("Message : "+message.toString());
+		SensorEventHandlerService sensorEventHandlerService = new SensorEventHandlerService();
 		sensorEventHandlerService.handleSensorEvent(message);
 	}
 }

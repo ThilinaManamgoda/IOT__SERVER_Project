@@ -1,18 +1,15 @@
-package org.maana.iot_project.models.device;
+package org.maana.iot_project.messages;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class DeviceControlMessage {
+public class DeviceControRequestlMessage {
 
 	private long deviceId;
 	private long userId;
-	private String command;
+	private long eventId;
 	
-	public DeviceControlMessage() {
-		
-	
-	}
+	 public DeviceControRequestlMessage() {	}
 
 	public long getDeviceId() {
 		return deviceId;
@@ -30,13 +27,13 @@ public class DeviceControlMessage {
 		this.userId = userId;
 	}
 
-	public String getCommand() {
-		return command;
+	public long getEventId() {
+		return eventId;
 	}
 
-	public void setCommand(String command) {
-		this.command = command;
+	public void setEventId(long eventId) {
+		this.eventId = eventId;
 	}
-	
-
+	 
+	 
 }

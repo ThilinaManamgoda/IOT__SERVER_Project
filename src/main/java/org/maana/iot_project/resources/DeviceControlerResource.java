@@ -8,8 +8,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.maana.iot_project.messages.DeviceControRequestlMessage;
 import org.maana.iot_project.models.ServerConstants;
-import org.maana.iot_project.models.device.DeviceControRequestlMessage;
 import org.maana.iot_project.services.DeviceEventHandlerService;
 
 

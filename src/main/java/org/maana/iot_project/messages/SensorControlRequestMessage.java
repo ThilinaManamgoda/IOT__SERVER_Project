@@ -1,4 +1,4 @@
-package org.maana.iot_project.models.sensor;
+package org.maana.iot_project.messages;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

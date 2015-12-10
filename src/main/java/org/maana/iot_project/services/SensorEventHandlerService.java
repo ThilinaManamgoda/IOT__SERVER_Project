@@ -8,37 +8,29 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.maana.iot_project.database.UserDataBase;
+import org.maana.iot_project.messages.DeviceControRequestlMessage;
+import org.maana.iot_project.messages.SensorControlRequestMessage;
+import org.maana.iot_project.models.ServerConstants;
 import org.maana.iot_project.models.User;
-import org.maana.iot_project.models.device.DeviceControRequestlMessage;
 import org.maana.iot_project.models.sensor.Sensor;
-import org.maana.iot_project.models.sensor.SensorControlRequestMessage;
 import org.maana.iot_project.models.sensor.SensorCriticalAction;
+import org.maana.iot_project.optional_apis.SensorAction;
 
 public class SensorEventHandlerService {
 
-	public static SensorEventHandlerService sensorEventHandlerService = null;
-	
-	private UserDataBase userDataBase = UserDataBase.getInstanceOfThisClass();
 
-	private  DeviceEventHandlerService deviceEventHandlerService =DeviceEventHandlerService.getInstanceOfThisCalss();
+	
+	
 
 	// EMPTY CONSTRUCTOR
 	public SensorEventHandlerService() {
-		System.out.println("SensorEventHandlerService ......");
+//		System.out.println("SensorEventHandlerService ......");
 		
 		
 		
 	}
 
-	public static SensorEventHandlerService getInstanceOfThisClass() {
-		if (sensorEventHandlerService == null) {
-			System.out.println("SensorEventHandlerService this should run only once");
-			sensorEventHandlerService = new SensorEventHandlerService();
-			return sensorEventHandlerService;
-		} else {
-			return sensorEventHandlerService;
-		}
-	}
+
 
 	public void handleSensorEvent(MqttMessage mqttMessage) {
 		System.out.println("sensorEventHandlerService : handleSensorEvent");
@@ -47,21 +39,24 @@ public class SensorEventHandlerService {
 		long sensorId = sensorControlRequestMessage.getSensorId();
 		int sensorCriticalValue = sensorControlRequestMessage.getSensorCriticalValue();
 		
-		User user = userDataBase.getUserById(userId);
+		UserService userService = new UserService();
+		User user =userService.getUSerById(userId);
 		Sensor sensor = user.getSensor(sensorId);
 
-		ArrayList<SensorCriticalAction> sensorCriticalActions = sensor.getCriticalActions();
+		ArrayList<SensorAction> sensorActions = sensor.getSensorActions();
 
-		for (SensorCriticalAction action : sensorCriticalActions) {
-
-			if (sensorCriticalValue > action.getSensorCriticalValue()) {
-				DeviceControRequestlMessage deviceControRequestlMessage = new DeviceControRequestlMessage();
-				deviceControRequestlMessage.setDeviceId(action.getDevice().getDevice_Id());
-				deviceControRequestlMessage.setEventId(action.getEventId());
-				deviceControRequestlMessage.setUserId(userId);
-				System.out.println("going : deviceEventHandlerService");
-				deviceEventHandlerService.handleDeviceEvent(userId, deviceControRequestlMessage);
-			}
+		for (SensorAction action : sensorActions) {
+			int  condition = action.getCondition();	
+				switch(condition){
+					
+					case(ServerConstants.LAGER_THAN):{
+						
+						if(sensorCriticalValue>action.getSensorthresholdValue()){
+							action.execute(sensorCriticalValue, "", userId);
+						}
+					}
+				
+				}
 		}
 
 	}

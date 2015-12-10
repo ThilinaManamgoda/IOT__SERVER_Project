@@ -8,10 +8,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.maana.iot_project.database.UserDataBase;
+import org.maana.iot_project.messages.DeviceControRequestlMessage;
+import org.maana.iot_project.messages.DeviceControlMessage;
 import org.maana.iot_project.models.User;
 import org.maana.iot_project.models.device.Device;
-import org.maana.iot_project.models.device.DeviceControRequestlMessage;
-import org.maana.iot_project.models.device.DeviceControlMessage;
 import org.maana.iot_project.models.device.DeviceType;
 import org.maana.iot_project.models.device.EventDevice;
 

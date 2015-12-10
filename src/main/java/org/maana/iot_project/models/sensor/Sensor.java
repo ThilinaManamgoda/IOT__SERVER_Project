@@ -4,23 +4,25 @@ import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.maana.iot_project.optional_apis.SensorAction;
+
 @XmlRootElement
 public class Sensor {
 	
 	private long sensorId;
 	private Sensor_Model sensor_Model;
 	private int sensorCriticalValue;
-	private ArrayList<SensorCriticalAction> criticalActions;
+	private ArrayList<SensorAction> sensorActions;
 	
-	public boolean addSensorCriticalAction(SensorCriticalAction arg0) {
-		return criticalActions.add(arg0);
+	public boolean addSensorAction(SensorAction arg0) {
+		return sensorActions.add(arg0);
 	}
 
-	public SensorCriticalAction getSensorCriticalAction(int arg0) {
-		return criticalActions.get(arg0);
+	public SensorAction getSensorAction(int arg0) {
+		return sensorActions.get(arg0);
 	}
 
-	public Sensor(){criticalActions = new ArrayList<SensorCriticalAction>(); }
+	public Sensor(){sensorActions = new ArrayList<SensorAction>(); }
 
 	public long getSensorId() {
 		return sensorId;
@@ -46,12 +48,12 @@ public class Sensor {
 		this.sensorCriticalValue = sensorCriticalValue;
 	}
 
-	public ArrayList<SensorCriticalAction> getCriticalActions() {
-		return criticalActions;
+	public ArrayList<SensorAction> getSensorActions() {
+		return sensorActions;
 	}
 
-	public void setCriticalActions(ArrayList<SensorCriticalAction> criticalActions) {
-		this.criticalActions = criticalActions;
+	public void setActions(ArrayList<SensorAction> sensorActions) {
+		this.sensorActions = sensorActions;
 	}
 	
 	
