@@ -23,8 +23,8 @@ public class User {
 	private Map<Long, Sensor> sensors = new HashMap<Long, Sensor>();
 	
 	
-	public Sensor getSensor(Object arg0) {
-		return sensors.get(arg0);
+	public Sensor getSensor(long sensorId) {
+		return sensors.get(sensorId);
 	}
 
 	public Map<Long, Device> getDevices() {

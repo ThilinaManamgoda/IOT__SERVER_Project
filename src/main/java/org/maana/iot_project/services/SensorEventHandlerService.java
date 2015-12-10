@@ -53,6 +53,7 @@ public class SensorEventHandlerService {
 						
 						if(sensorCriticalValue>action.getSensorthresholdValue()){
 							action.execute(sensorCriticalValue, "", userId);
+							System.out.println("ok");
 						}
 					}
 				

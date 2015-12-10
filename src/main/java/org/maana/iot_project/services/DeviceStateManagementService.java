@@ -20,19 +20,14 @@ public class DeviceStateManagementService {
 		
 		DeviceStateChangeRequestMessage deviceStateChangeRequestMessage = getDeviceStateChangeRequestMessageObject(message);
 		
-		System.out.println(deviceStateChangeRequestMessage.getUserId());
 		UserService userService = new UserService();
 
 		long userId =deviceStateChangeRequestMessage.getUserId();
-		System.out.println("3");
+	
 		User user =userService.getUSerById(userId);
-		System.out.println("4");
 		Device device = user.getDeviceById(deviceStateChangeRequestMessage.getDeviceId());
-		System.out.println("5");
 		device.setDeviceState(deviceStateChangeRequestMessage.getDeviceState());
-		System.out.println("6");
 		userService.putUser(user, userId);
-		System.out.println("7");
 	}
 
 	private DeviceStateChangeRequestMessage getDeviceStateChangeRequestMessageObject( MqttMessage message){

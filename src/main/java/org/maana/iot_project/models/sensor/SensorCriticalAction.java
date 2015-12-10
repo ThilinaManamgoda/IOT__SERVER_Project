@@ -63,5 +63,10 @@ public class SensorCriticalAction extends SensorAction{
 		// TODO Auto-generated method stub
 		return sensorThresholdValue;
 	}
+
+	@Override
+	public void setSensorthresholdValue(int sensorThresholdValue) {
+		this.sensorThresholdValue=sensorThresholdValue;
+	}
 	
 }

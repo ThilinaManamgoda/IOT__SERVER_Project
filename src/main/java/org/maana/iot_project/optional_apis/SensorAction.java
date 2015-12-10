@@ -1,11 +1,15 @@
 package org.maana.iot_project.optional_apis;
 
-public abstract class SensorAction {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public  class SensorAction {
 	public int sensorThresholdValue;
-	public abstract void execute(int sensorValue,String arg,long userId);
-	public abstract int getCondition();
+	public int condition;
+	public  void execute(int sensorValue,String arg,long userId){};
+	public  int getCondition(){return condition;};
 	public SensorAction() {
 	}
-	public abstract int getSensorthresholdValue();
-	
+	public  int getSensorthresholdValue(){return sensorThresholdValue;};
+	public  void setSensorthresholdValue(int sensorThresholdValue){};
 }

@@ -1,5 +1,8 @@
 package org.maana.iot_project.models.device;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class EventDevice {
 
 	private long eventId;

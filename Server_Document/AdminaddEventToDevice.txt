@@ -1,0 +1,6 @@
+http://localhost:8080/iot_project/webresources/admin/adddevice/1/addevent
+{
+        "eventId":"1",
+        "eventName":"ON",
+        "eventCommand":"Switch_ON"
+          }

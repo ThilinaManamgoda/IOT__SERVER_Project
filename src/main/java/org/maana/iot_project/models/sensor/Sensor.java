@@ -14,6 +14,10 @@ public class Sensor {
 	private int sensorCriticalValue;
 	private ArrayList<SensorAction> sensorActions;
 	
+	public void setSensorActions(ArrayList<SensorAction> sensorActions) {
+		this.sensorActions = sensorActions;
+	}
+
 	public boolean addSensorAction(SensorAction arg0) {
 		return sensorActions.add(arg0);
 	}

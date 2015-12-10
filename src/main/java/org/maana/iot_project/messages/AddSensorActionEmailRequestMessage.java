@@ -7,7 +7,22 @@ public class AddSensorActionEmailRequestMessage {
 
 	private String email;
 	private int sensorThresholdValue;
-	
+	private long sensorId;
+	private int condition;
+	public AddSensorActionEmailRequestMessage() {
+	}
+	public int getCondition() {
+		return condition;
+	}
+	public void setCondition(int condition) {
+		this.condition = condition;
+	}
+	public long getSensorId() {
+		return sensorId;
+	}
+	public void setSensorId(long sensorId) {
+		this.sensorId = sensorId;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -20,13 +35,7 @@ public class AddSensorActionEmailRequestMessage {
 	public void setSensorThresholdValue(int sensorThresholdValue) {
 		this.sensorThresholdValue = sensorThresholdValue;
 	}
-	public String getCondtion() {
-		return condtion;
-	}
-	public void setCondtion(String condtion) {
-		this.condtion = condtion;
-	}
-	private String condtion;
-	public AddSensorActionEmailRequestMessage() {
-	}
+	
+
+	
 }

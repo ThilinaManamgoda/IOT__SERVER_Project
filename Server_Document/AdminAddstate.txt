@@ -1,0 +1,5 @@
+http://localhost:8080/iot_project/webresources/admin/adddevice/1/addstate
+{
+	"stateId":"1",
+	"StateName":"ON"
+}

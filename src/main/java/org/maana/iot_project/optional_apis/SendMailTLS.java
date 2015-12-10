@@ -22,7 +22,7 @@ public class SendMailTLS extends SensorAction{
 
 
 	public SendMailTLS() {
-		super();
+
 	}
 
 
@@ -81,6 +81,12 @@ public class SendMailTLS extends SensorAction{
 	@Override
 	public int getSensorthresholdValue() {
 		return sensorThresholdValue;
+	}
+
+
+	@Override
+	public void setSensorthresholdValue(int sensorThresholdValue) {
+		this.sensorThresholdValue= sensorThresholdValue;
 	}
 
 }

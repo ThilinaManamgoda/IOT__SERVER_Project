@@ -1,0 +1,6 @@
+{
+"email":"maanafunedu@gmail.com",
+"sensorThresholdValue":"20",
+"sensorId":"1",
+"condition":"1"
+}

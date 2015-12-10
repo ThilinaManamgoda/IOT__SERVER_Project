@@ -1,0 +1,23 @@
+{
+  "email": "maanafun@gmail.com",
+  "id": "1",
+  "devices":{},
+  "name": "Maana",
+  "phoneNumber": "0770445855",
+  "sensors": {
+    "entry": {
+      "key": "1",
+      "value": {
+        "sensorActions": {},
+        "sensorCriticalValue": "0",
+        "sensorId": "1",
+        "sensor_Model": {
+          "sensorModel": "Samsung",
+          "sensorType": {
+            "sensorType": "Temp"
+          }
+        }
+      }
+    }
+  }
+}

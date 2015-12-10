@@ -15,6 +15,12 @@ public class Device {
 	private DeviceState deviceState;
 	private HashMap<Long,DeviceState> states;
 	
+	public HashMap<Long, DeviceState> getStates() {
+		return states;
+	}
+	public void setStates(HashMap<Long, DeviceState> states) {
+		this.states = states;
+	}
 	public Device() {
 	}
 	public void addState(long stateId,DeviceState deviceState){

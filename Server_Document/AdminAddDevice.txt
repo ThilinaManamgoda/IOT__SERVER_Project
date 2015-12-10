@@ -1,0 +1,19 @@
+http://localhost:8080/iot_project/webresources/admin/adddevice
+
+{
+            "deviceName": "BULB",
+            "deviceType": {
+              "deviceModel": {
+                "event_List": {
+                 
+                },
+                "id": "1",
+                "modelName": "PHILIPS"
+              },
+              "deviceTypeId": "1",
+              "deviceTypeName": "BULB"
+            },
+            "device_Id": "1",
+            "deviceState":{},
+            "states":{}
+          }
