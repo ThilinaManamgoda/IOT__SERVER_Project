@@ -11,20 +11,20 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.maana.iot_project.models.ServerConstants;
+import org.maana.iot_project.models.sensor.Sensor;
 
-public class SendMailTLS extends SensorAction{
+public class SendMailTLS extends SensorAction {
 
 	private String toEmailAddress;
 	private int condition;
+
 	public void setCondition(int condition) {
 		this.condition = condition;
 	}
 
-
 	public SendMailTLS() {
 
 	}
-
 
 	public String getToEmailAddress() {
 		return toEmailAddress;
@@ -33,8 +33,6 @@ public class SendMailTLS extends SensorAction{
 	public void setToEmailAddress(String toEmailAddress) {
 		this.toEmailAddress = toEmailAddress;
 	}
-
-	
 
 	public void sendMail(String text) {
 
@@ -65,28 +63,27 @@ public class SendMailTLS extends SensorAction{
 		}
 	}
 
-
 	@Override
-	public void execute(int sensorvalue,String arg,long userId) {
-		sendMail(ServerConstants.EMAIL_MESSAGE+" :" + sensorvalue);
+	public void execute(Sensor sensor, String arg, long userId) {
+		sendMail(ServerConstants.EMAIL_MESSAGE + ServerConstants.EMAIL_MESSAGE_SENSOR_ID + sensor.getSensorId() + ","
+				+ ServerConstants.EMAIL_MESSAGE_SENSOR_MODEL + sensor.getSensor_Model().getSensorModel() + ","
+				+ ServerConstants.EMAIL_MESSAGE_SENSOR_TYPE + sensor.getSensor_Model().getSensorType().getSensorType()
+				+ "," + ServerConstants.EMAIL_MESSAGE_SENSOR_VALUE + sensor.getSensorCriticalValue());
 	}
-
 
 	@Override
 	public int getCondition() {
 		return condition;
 	}
 
-
 	@Override
 	public int getSensorthresholdValue() {
 		return sensorThresholdValue;
 	}
 
-
 	@Override
 	public void setSensorthresholdValue(int sensorThresholdValue) {
-		this.sensorThresholdValue= sensorThresholdValue;
+		this.sensorThresholdValue = sensorThresholdValue;
 	}
 
 }

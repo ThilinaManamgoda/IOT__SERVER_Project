@@ -51,8 +51,9 @@ public class SensorEventHandlerService {
 					
 					case(ServerConstants.LAGER_THAN):{
 						
-						if(sensorCriticalValue>action.getSensorthresholdValue()){
-							action.execute(sensorCriticalValue, "", userId);
+						if(sensorCriticalValue > action.getSensorthresholdValue()){
+							System.out.println("ok");
+							action.execute(sensor, "", userId);
 							System.out.println("ok");
 						}
 					}

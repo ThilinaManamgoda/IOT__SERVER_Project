@@ -40,7 +40,7 @@ public class SensorCriticalAction extends SensorAction{
 	}
 
 	@Override
-	public void execute(int sensorValue,String arg,long userId) {
+	public void execute(Sensor sensor,String arg,long userId) {
 	
 		DeviceControRequestlMessage deviceControRequestlMessage = new DeviceControRequestlMessage();
 		deviceControRequestlMessage.setDeviceId(getDevice().getDevice_Id());

@@ -19,8 +19,11 @@ public class ServerConstants {
 	public final static String EMAIL_USERNAME ="maanafuntest@gmail.com";
 	public final static String EMAIL_PASSWORD ="1manaMgoda";
 	public final static String EMAIL_SUBJECT ="IOT_SERVER";
-	public final static String EMAIL_MESSAGE="This is from IOT server";
-	
+	public final static String EMAIL_MESSAGE="This is from IOT server ";
+	public final static String EMAIL_MESSAGE_SENSOR_TYPE="sensor type : ";
+	public final static String EMAIL_MESSAGE_SENSOR_MODEL="sensor model : ";
+	public final static String EMAIL_MESSAGE_SENSOR_ID="sensor ID : ";
+	public final static String EMAIL_MESSAGE_SENSOR_VALUE="sensor Value : ";
 	
 	
 	public final static int LAGER_THAN=1;
