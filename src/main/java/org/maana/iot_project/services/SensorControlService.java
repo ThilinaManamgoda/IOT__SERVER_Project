@@ -76,6 +76,8 @@ public final static String MQTT_SENSOR_CONNCETION_ID="12345";
 		System.out.println("Message arrived");
 		System.out.println("Going to sensorEventHandlerService");
 		System.out.println("Message : "+message.toString());
+		SensorManagementService sensorManagementService = new SensorManagementService();
+		sensorManagementService.updateStatesOfSensor(message);
 		SensorEventHandlerService sensorEventHandlerService = new SensorEventHandlerService();
 		sensorEventHandlerService.handleSensorEvent(message);
 	}

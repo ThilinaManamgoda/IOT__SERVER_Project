@@ -37,7 +37,7 @@ public class UserResource {
 		UserService userService = new UserService();
 		if (userService.isUserIsThere(id)) {
 			User temp_user = userService.getUSerById(id);
-			return Response.ok().entity(temp_user.getDeviceById(1)).build();
+			return Response.ok().entity(temp_user).build();
 
 		} else {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
