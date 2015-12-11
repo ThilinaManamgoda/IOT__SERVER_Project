@@ -8,6 +8,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.maana.iot_project.messages.AddSensorActionEmailRequestMessage;
 import org.maana.iot_project.messages.SensorControlRequestMessage;
+import org.maana.iot_project.messages.UserSensorStateMessage;
 import org.maana.iot_project.models.User;
 import org.maana.iot_project.models.sensor.Sensor;
 import org.maana.iot_project.optional_apis.SendMailTLS;
@@ -42,6 +43,19 @@ public class SensorManagementService {
 		Sensor sensor = user.getSensor(sensorId);
 		sensor.setSensorCriticalValue(sensorCriticalValue);
 		userService.putUser(user, userId);
+	}
+
+	public UserSensorStateMessage getSensorState(long userId, long sensorId) {
+		UserService userService = new UserService();
+		User user = userService.getUSerById(userId);
+		Sensor sensor = user.getSensor(sensorId);
+
+		UserSensorStateMessage message = new UserSensorStateMessage();
+		message.setSensorId(sensorId);
+		message.setUserId(userId);
+		message.setSensorCriticalValue(sensor.getSensorCriticalValue());
+		return message;
+
 	}
 
 	private SensorControlRequestMessage getSensorControlRequestMessage(MqttMessage mqttMessage) {

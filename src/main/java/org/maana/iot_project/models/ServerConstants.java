@@ -15,6 +15,7 @@ public class ServerConstants {
 	public final static String URL_FOR_ADD_SENSOR_ACTION_DEVICE = "/{sensorId}/addsensoraction/device";
 	// CONSTANTS FOR USER SENSOR
 	public final static String URL_FOR_SENSOR = "/{userId}/sensors";
+	public static final String URL_FOR_GET_SENSOR_CRITICAL_VALUE = "/{sensorId}/getsensorstate";
 	// CONSTANTS FOR USER ACCOUNST
 	public final static String URL_FOR_USERS = "/user";
 	public final static String URL_FOR_USERS_GET_OR_DELETE = "/{userId}";
