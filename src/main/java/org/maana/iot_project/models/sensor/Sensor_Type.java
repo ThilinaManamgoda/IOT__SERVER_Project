@@ -6,14 +6,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Sensor_Type {
 
 	private String sensorType;
-	
-	public Sensor_Type() { }
-	
+
+	public Sensor_Type() {
+	}
+
 	public String getSensorType() {
 		return sensorType;
 	}
+
 	public void setSensorType(String sensorType) {
 		this.sensorType = sensorType;
 	}
-	
+
 }

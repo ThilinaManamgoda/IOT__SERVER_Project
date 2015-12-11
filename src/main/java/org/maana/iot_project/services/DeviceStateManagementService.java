@@ -12,29 +12,30 @@ import org.maana.iot_project.models.device.Device;
 
 public class DeviceStateManagementService {
 
-	
 	public DeviceStateManagementService() {
 	}
 
-	public void updateDeviceState( MqttMessage message){
-		
-		DeviceStateChangeRequestMessage deviceStateChangeRequestMessage = getDeviceStateChangeRequestMessageObject(message);
-		
+	public void updateDeviceState(MqttMessage message) {
+
+		DeviceStateChangeRequestMessage deviceStateChangeRequestMessage = getDeviceStateChangeRequestMessageObject(
+				message);
+
 		UserService userService = new UserService();
 
-		long userId =deviceStateChangeRequestMessage.getUserId();
-	
-		User user =userService.getUSerById(userId);
+		long userId = deviceStateChangeRequestMessage.getUserId();
+
+		User user = userService.getUSerById(userId);
 		Device device = user.getDeviceById(deviceStateChangeRequestMessage.getDeviceId());
 		device.setDeviceState(deviceStateChangeRequestMessage.getDeviceState());
 		userService.putUser(user, userId);
 	}
 
-	private DeviceStateChangeRequestMessage getDeviceStateChangeRequestMessageObject( MqttMessage message){
+	private DeviceStateChangeRequestMessage getDeviceStateChangeRequestMessageObject(MqttMessage message) {
 		ObjectMapper mapper = new ObjectMapper();
 		DeviceStateChangeRequestMessage deviceStateChangeRequestMessage = null;
 		try {
-			deviceStateChangeRequestMessage =mapper.readValue(message.toString(), DeviceStateChangeRequestMessage.class);
+			deviceStateChangeRequestMessage = mapper.readValue(message.toString(),
+					DeviceStateChangeRequestMessage.class);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

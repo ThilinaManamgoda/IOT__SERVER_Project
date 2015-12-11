@@ -8,8 +8,9 @@ public class DeviceType {
 	private int deviceTypeId;
 	private String deviceTypeName;
 	private DeviceModel deviceModel;
-	
-	public DeviceType() { }
+
+	public DeviceType() {
+	}
 
 	public int getDeviceTypeId() {
 		return deviceTypeId;
@@ -34,8 +35,5 @@ public class DeviceType {
 	public void setDeviceModel(DeviceModel deviceModel) {
 		this.deviceModel = deviceModel;
 	}
-	
-	
-	
-	
+
 }

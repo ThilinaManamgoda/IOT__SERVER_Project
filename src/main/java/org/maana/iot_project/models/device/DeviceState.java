@@ -7,7 +7,7 @@ public class DeviceState {
 
 	private int stateId;
 	private String StateName;
-	
+
 	public DeviceState() {
 	}
 
@@ -27,6 +27,4 @@ public class DeviceState {
 		StateName = stateName;
 	}
 
-	
-	
 }

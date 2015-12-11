@@ -8,9 +8,9 @@ public class EventDevice {
 	private long eventId;
 	private String eventName;
 	private String eventCommand;
-	
+
 	public EventDevice() {
-	
+
 	}
 
 	public long getEventId() {
@@ -36,7 +36,5 @@ public class EventDevice {
 	public void setEventCommand(String eventCommand) {
 		this.eventCommand = eventCommand;
 	}
-	
-	
-	
+
 }

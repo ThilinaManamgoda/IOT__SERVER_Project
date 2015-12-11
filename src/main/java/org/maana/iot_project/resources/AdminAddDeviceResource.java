@@ -19,24 +19,25 @@ import org.maana.iot_project.services.AdminDeviceManagementService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class AdminAddDeviceResource {
 
-	
 	@POST
-	public Response addDevice(Device device){
+	public Response addDevice(Device device) {
 		AdminDeviceManagementService addDeviceService = new AdminDeviceManagementService();
-		Device return_device =addDeviceService.addDevice(device);
+		Device return_device = addDeviceService.addDevice(device);
 		return Response.ok().entity(return_device).build();
-		
+
 	}
+
 	@Path(ServerConstants.URL_FOR_ADD_DEVICE_EVENT)
 	@POST
-	public Response addDeviceEvent(@PathParam("deviceId")long deviceId,EventDevice eventDevice){
+	public Response addDeviceEvent(@PathParam("deviceId") long deviceId, EventDevice eventDevice) {
 		AdminDeviceManagementService addDeviceService = new AdminDeviceManagementService();
-		EventDevice return_eventDevice=addDeviceService.addDeviceEvent(deviceId, eventDevice);
+		EventDevice return_eventDevice = addDeviceService.addDeviceEvent(deviceId, eventDevice);
 		return Response.ok().entity(return_eventDevice).build();
 	}
+
 	@Path(ServerConstants.URL_FOR_ADMIN_ADD_DEVICE_STATE)
 	@POST
-	public Response addState(@PathParam("deviceId")long deviceId,DeviceState deviceState){
+	public Response addState(@PathParam("deviceId") long deviceId, DeviceState deviceState) {
 		System.out.println(deviceState);
 		AdminDeviceManagementService addDeviceService = new AdminDeviceManagementService();
 		DeviceState return_deviceState = addDeviceService.addState(deviceId, deviceState);

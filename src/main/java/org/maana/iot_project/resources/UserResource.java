@@ -30,7 +30,6 @@ public class UserResource {
 
 	// GET USERSERVICE CLASS INSTANCE
 
-	
 	@Path(ServerConstants.URL_FOR_USERS_GET_OR_DELETE)
 	@GET
 	public Response getUserById(@PathParam("userId") long id) {
@@ -49,20 +48,21 @@ public class UserResource {
 	public Response storeUser(User user, @Context UriInfo uriInfo) {
 
 		UserService userService = new UserService();
-		
-		long userId = userService.noOfUsers()+1;
+
+		long userId = userService.noOfUsers() + 1;
 		user.setId(userId);
-		userService.putUser(user,userId);
+		userService.putUser(user, userId);
 		String userId_String = String.valueOf(userId);
-		//CREATE URI FOR CREATED USER
+		// CREATE URI FOR CREATED USER
 		URI uri = uriInfo.getAbsolutePathBuilder().path(userId_String).build();
 		return Response.created(uri).entity(user).build();
 
 	}
-	//DELETE USER
+
+	// DELETE USER
 	@Path(ServerConstants.URL_FOR_USERS_GET_OR_DELETE)
 	@DELETE
-	public Response deleteUser(@PathParam ("userId") long userId){
+	public Response deleteUser(@PathParam("userId") long userId) {
 		UserService userService = new UserService();
 		if (userService.isUserIsThere(userId)) {
 			User temp_user = userService.deleteUser(userId);
@@ -71,6 +71,6 @@ public class UserResource {
 		} else {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
-		
+
 	}
 }

@@ -8,12 +8,12 @@ import org.maana.iot_project.optional_apis.SensorAction;
 
 @XmlRootElement
 public class Sensor {
-	
+
 	private long sensorId;
 	private Sensor_Model sensor_Model;
 	private int sensorCriticalValue;
 	private ArrayList<SensorAction> sensorActions;
-	
+
 	public void setSensorActions(ArrayList<SensorAction> sensorActions) {
 		this.sensorActions = sensorActions;
 	}
@@ -26,7 +26,9 @@ public class Sensor {
 		return sensorActions.get(arg0);
 	}
 
-	public Sensor(){sensorActions = new ArrayList<SensorAction>(); }
+	public Sensor() {
+		sensorActions = new ArrayList<SensorAction>();
+	}
 
 	public long getSensorId() {
 		return sensorId;
@@ -59,7 +61,5 @@ public class Sensor {
 	public void setActions(ArrayList<SensorAction> sensorActions) {
 		this.sensorActions = sensorActions;
 	}
-	
-	
-	
+
 }

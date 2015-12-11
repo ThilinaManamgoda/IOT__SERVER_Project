@@ -13,17 +13,17 @@ import org.maana.iot_project.models.ServerConstants;
 import org.maana.iot_project.services.SensorManagementService;
 
 @Path(ServerConstants.URL_FOR_SENSOR)
-@Consumes (MediaType.APPLICATION_JSON)
-@Produces (MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class SensorControlResource {
 
-	
 	@Path(ServerConstants.URL_FOR_ADD_SENSOR_ACTION_EMAIL)
 	@POST
-	public Response addEmailaction(@PathParam("userId")long userId,@PathParam("sensorId")long sensorId,AddSensorActionEmailRequestMessage actionEmailRequestMessage){
+	public Response addEmailaction(@PathParam("userId") long userId, @PathParam("sensorId") long sensorId,
+			AddSensorActionEmailRequestMessage actionEmailRequestMessage) {
 		SensorManagementService sensorManagementService = new SensorManagementService();
 		sensorManagementService.addSensorActionEmail(userId, sensorId, actionEmailRequestMessage);
 		return Response.ok().build();
-		
+
 	}
 }

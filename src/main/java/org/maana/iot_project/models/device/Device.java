@@ -13,22 +13,27 @@ public class Device {
 	private DeviceType deviceType;
 	private Date device_Created_Date;
 	private DeviceState deviceState;
-	private HashMap<Long,DeviceState> states;
-	
+	private HashMap<Long, DeviceState> states;
+
 	public HashMap<Long, DeviceState> getStates() {
 		return states;
 	}
+
 	public void setStates(HashMap<Long, DeviceState> states) {
 		this.states = states;
 	}
+
 	public Device() {
 	}
-	public void addState(long stateId,DeviceState deviceState){
+
+	public void addState(long stateId, DeviceState deviceState) {
 		states.put(stateId, deviceState);
 	}
-	public DeviceState getState(long stateId){
+
+	public DeviceState getState(long stateId) {
 		return states.get(stateId);
 	}
+
 	public Long getDevice_Id() {
 		return device_Id;
 	}
