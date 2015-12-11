@@ -1,0 +1,26 @@
+{
+  "deviceName": "BULB",
+  "deviceType": {
+    "deviceModel": {
+      "event_List": {
+        "entry": {
+          "key": "214",
+          "value": {
+            "eventCommand": "OK",
+            "eventId": "214",
+            "eventName": "On"
+          }
+        }
+      },
+      "id": "1",
+      "modelName": "PHILIPS"
+    },
+    "deviceTypeId": "1",
+    "deviceTypeName": "BULB"
+  },
+  "device_Id": "1",
+  "stateDevice": {
+    "stateId": "0"
+  },
+  "states": null
+}

@@ -56,8 +56,8 @@ public class ConnectToDeviceService implements MQTT_Constants, MqttCallback {
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		System.out.println("Got Reply");
-		DeviceStateManagementService deviceStateManagementService = new DeviceStateManagementService();
-		deviceStateManagementService.updateDeviceState(message);
+		DeviceManagementService deviceManagementService = new DeviceManagementService();
+		deviceManagementService.updateDeviceState(message);
 		System.out.println("updateed");
 		mqttClientForchangeState.disconnect();
 		mqttClientForchangeState.close();

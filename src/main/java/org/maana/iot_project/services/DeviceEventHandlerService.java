@@ -17,23 +17,12 @@ import org.maana.iot_project.models.device.EventDevice;
 
 public class DeviceEventHandlerService implements MQTT_Constants {
 
-	private static DeviceEventHandlerService deviceEventHandlerService = null;
 
 	public DeviceEventHandlerService() {
-		System.out.println("DeviceEventHandlerService ....");
 
 	}
 
-	public static DeviceEventHandlerService getInstanceOfThisCalss() {
-
-		if (deviceEventHandlerService == null) {
-			System.out.println("deviceEventHandlerService this should run only once");
-			deviceEventHandlerService = new DeviceEventHandlerService();
-			return deviceEventHandlerService;
-		} else {
-			return deviceEventHandlerService;
-		}
-	}
+	
 
 	public void handleDeviceEvent(long userId, DeviceControRequestlMessage deviceControRequestlMessage) {
 		System.out.println("in DeviceEventHandlerService : handleDeviceEvent");

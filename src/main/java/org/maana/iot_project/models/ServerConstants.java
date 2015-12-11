@@ -5,7 +5,7 @@ public class ServerConstants {
 	// CONSTANTS FOR USER DEVICE CONTROL
 	public final static String URL_FOR_DEVICES = "/{userId}/devices";
 	public final static String URL_FOR_ADD_DEVICES = "/{userId}/adddevice";
-	public final static String URL_FOR_GET_DEVICE_STATE = "/{deviceId}";
+	public final static String URL_FOR_GET_DEVICE_STATE = "/{deviceId}/getstate";
 	// CONSTANTS FOR ADMIN DEVICE
 	public final static String URL_FOR_ADD_DEVICE_EVENT = "/{deviceId}/addevent";
 	public final static String URL_FOR_ADMIN_ADD_DEVICES = "/admin/adddevice";
