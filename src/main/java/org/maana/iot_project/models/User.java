@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jongo.marshall.jackson.oid.MongoId;
 import org.maana.iot_project.models.device.Device;
 import org.maana.iot_project.models.sensor.Sensor;
 
@@ -14,6 +15,7 @@ public class User {
 
 	private String name;
 	private String email;
+	@MongoId
 	private long id;
 	private String phoneNumber;
 	private Map<Long, Device> devices = new HashMap<Long, Device>();

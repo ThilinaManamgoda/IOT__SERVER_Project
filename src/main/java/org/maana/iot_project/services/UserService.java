@@ -19,21 +19,16 @@ public class UserService {
 
 	// PUT USER IN DATABASE
 	public void putUser(User user, long userId) {
-
 		userDataBase.putUser(user, userId);
 	}
 
-	// CHCKE USER IS VALID OR NOT
-	public boolean isUserIsThere(long id) {
-		return userDataBase.isUserThere(id);
-	}
-
+	
 	// DELETE USER AND RETURN USER
 	public User deleteUser(long userId) {
 		return userDataBase.deleteUser(userId);
 	}
 
-	public int noOfUsers() {
+	public long noOfUsers() {
 		return userDataBase.noOfUsers();
 	}
 }

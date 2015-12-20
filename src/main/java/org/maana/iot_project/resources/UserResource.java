@@ -34,21 +34,16 @@ public class UserResource {
 	@GET
 	public Response getUserById(@PathParam("userId") long id) {
 		UserService userService = new UserService();
-		if (userService.isUserIsThere(id)) {
+		
 			User temp_user = userService.getUSerById(id);
 			return Response.ok().entity(temp_user).build();
 
-		} else {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-		}
 	}
 
 	// STORE USER
 	@POST
 	public Response storeUser(User user, @Context UriInfo uriInfo) {
-
 		UserService userService = new UserService();
-
 		long userId = userService.noOfUsers() + 1;
 		user.setId(userId);
 		userService.putUser(user, userId);
@@ -64,13 +59,9 @@ public class UserResource {
 	@DELETE
 	public Response deleteUser(@PathParam("userId") long userId) {
 		UserService userService = new UserService();
-		if (userService.isUserIsThere(userId)) {
+		
 			User temp_user = userService.deleteUser(userId);
 			return Response.ok().entity(temp_user).build();
-
-		} else {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-		}
 
 	}
 }
