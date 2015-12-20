@@ -16,13 +16,12 @@ import org.maana.iot_project.services.AdminSensorManagementService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class AdminaddSensorResource {
 
-	
 	@POST
-	public Response addSensor(Sensor sensor){
-		
+	public Response addSensor(Sensor sensor) {
+
 		AdminSensorManagementService adminSensorManagementService = new AdminSensorManagementService();
-		Sensor return_sensor=adminSensorManagementService.addSensor(sensor);
+		Sensor return_sensor = adminSensorManagementService.addSensor(sensor);
 		return Response.ok().entity(return_sensor).build();
 	}
-	
+
 }

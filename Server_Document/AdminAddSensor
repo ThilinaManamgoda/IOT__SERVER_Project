@@ -1,0 +1,15 @@
+
+http://localhost:8080/iot_project/webresources/admin/addsensor
+{
+        "sensorActions": {
+        
+        },
+        "sensorCriticalValue": "0",
+        "sensorId": "1",
+        "sensor_Model": {
+          "sensorModel": "Samsung",
+          "sensorType": {
+            "sensorType": "Temp"
+          }
+        }
+      }
