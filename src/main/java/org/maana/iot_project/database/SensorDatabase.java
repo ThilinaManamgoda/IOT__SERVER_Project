@@ -4,12 +4,14 @@ import java.util.HashMap;
 
 import org.maana.iot_project.models.sensor.Sensor;
 
-public class SensorDatabase {
+import com.maanadev.mongo.MongodbImplement;
+
+public class SensorDatabase implements DataBaseConstants{
 
 	public static SensorDatabase sensorDatabase=null;
-	
-	private HashMap<Long , Sensor> database = new HashMap<Long, Sensor>();
+	private MongodbImplement<Sensor> database =null;
 	public SensorDatabase() {
+		database = new MongodbImplement<Sensor>(SENSOR_DATABASE, SENSOR_COLLECTION, Sensor.class);
 	}
 	
 	public static SensorDatabase getInstanceOfThisClass(){
@@ -23,12 +25,12 @@ public class SensorDatabase {
 	
 	
 	public Sensor getSensor(long sensorId){
-		return database.get(sensorId);
+		return database.get(String.valueOf(sensorId));
 	}
 	public void addSensor(long sensorId,Sensor sensor){
-		database.put(sensorId, sensor);	
+		database.save(sensor);
 	}
-	public int noOfSensors(){
-		return database.size();
+	public long noOfSensors(){
+		return database.getCount();
 	}
 }

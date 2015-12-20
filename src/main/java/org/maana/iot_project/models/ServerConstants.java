@@ -11,7 +11,7 @@ public class ServerConstants {
 	public final static String URL_FOR_ADMIN_ADD_DEVICES = "/admin/adddevice";
 	public final static String URL_FOR_ADMIN_ADD_DEVICE_STATE = "{deviceId}/addstate";
 	// CONSTANTS FOR ADMIN SENSOR
-	public final static String URL_FOR_ADD_SENSOR = "/admin/addsensor";
+	public final static String URL_FOR_ADMIN_ADD_SENSOR = "/admin/addsensor";
 	public final static String URL_FOR_ADD_SENSOR_ACTION_DEVICE = "/{sensorId}/addsensoraction/device";
 	// CONSTANTS FOR USER SENSOR
 	public final static String URL_FOR_SENSOR = "/{userId}/sensors";

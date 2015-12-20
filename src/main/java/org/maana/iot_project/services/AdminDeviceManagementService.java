@@ -23,7 +23,7 @@ public class AdminDeviceManagementService {
 		return dataBase.getDevice(deviceId);
 	}
 
-	private int noOfDevices() {
+	private long noOfDevices() {
 
 		return dataBase.noOfDevices();
 	}

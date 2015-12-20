@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jongo.marshall.jackson.oid.MongoId;
+
 @XmlRootElement
 public class Device {
-
+	@MongoId
 	private Long device_Id;
 	private String deviceName;
 	private DeviceType deviceType;

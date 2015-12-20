@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jongo.marshall.jackson.oid.MongoId;
 import org.maana.iot_project.optional_apis.SensorAction;
 
 @XmlRootElement
 public class Sensor {
-
+	@MongoId
 	private long sensorId;
 	private Sensor_Model sensor_Model;
 	private int sensorCriticalValue;
